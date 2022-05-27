@@ -51,7 +51,7 @@ void loop()
       getAccAmplitudes(&sumAccX, &sumAccY, &sumAccZ);
       setTimestamp();
       setGPS();
-      showGreen();
+      showConnectedToGps();
       // if a new distance value came in save to sd
       handleLeft();
       handleRight();
@@ -88,7 +88,7 @@ void loop()
             // Uploaded all values to home wifi, goes to sleep afterwards
             Serial.println("Going to hibernation");
 #endif
-            showRed();
+            showConnectingToGps();
             for (;;)
             {
               WiFi.disconnect();
@@ -102,14 +102,14 @@ void loop()
       byte fixType = myGNSS.getFixType();
       if (fixType == 0)
       {
-        showRed();
+        showConnectingToGps();
 #ifdef DEBUG_ENABLED
         //Serial.println(F("No fix"));
 #endif
       }
       else if (fixType == 1)
       {
-        showRed();
+        showConnectingToGps();
 #ifdef DEBUG_ENABLED
         Serial.println(F("Dead reckoning"));
 #endif
@@ -122,14 +122,14 @@ void loop()
       }
       else if (fixType == 4)
       {
-        showRed();
+        showConnectingToGps();
 #ifdef DEBUG_ENABLED
         Serial.println(F("GNSS + Dead reckoning"));
 #endif
       }
       else if (fixType == 5)
       {
-        showRed();
+        showConnectingToGps();
 #ifdef DEBUG_ENABLED
         Serial.println(F("Time only"));
 #endif
@@ -141,7 +141,7 @@ void loop()
   // Trys every 60 seconds to connect to saved WiFi and upload the values
   else // !standby
   {
-    showBlue();
+    showConnectedToWifi();
     getAccAmplitudes(&sumAccX, &sumAccY, &sumAccZ);
     unsigned long currentMillis = millis();
     if (currentMillis - previousMillis10s >= interval1s)
@@ -167,7 +167,7 @@ void loop()
           // Uploaded all values to home wifi, goes to sleep afterwards
           Serial.println("Going to hibernation");
 #endif
-          showRed();
+          showConnectingToGps();
           for (;;)
           {
             WiFi.disconnect();

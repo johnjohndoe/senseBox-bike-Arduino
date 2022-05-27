@@ -40,3 +40,11 @@ Alternativ kann auf der SDCard eine Datei `BIKE.CFG` (Siehe `BIKE.CFG.example`) 
 
 - In `futuriumSDNoAP.ino` das Makro `#define DEBUG_ENABLED` setzen, damit DEBUG Nachrichten in der seriellen Konsole angezeigt werden.
 - ⚠️ **ACHTUNG** Im DEBUG Modus startet die Box erst, wenn der *Serielle Monitor* geöffnet wird. Vor dem Betrieb den DEBUG Modus IMMER ausschalten!
+
+# Statusanzeige / Farbcodes
+
+Die Messstation signalisiert über die eingebaute LED, in welchem Zustand sie sich befindet.
+Folgende Zustände werden farblich voneinander unterschieden:
+- mit GPS verbunden, siehe [`showConnectedToGps`](RGBLEDhelpers.ino#L1) für hinterlegte Farbe
+- Verbindung zu GPS wieder hergestellt, [`showConnectingToGps`](RGBLEDhelpers.ino#L6) für hinterlegte Farbe
+- mit WiFI verbunden, siehe [`showConnectedToWifi`](RGBLEDhelpers.ino#L11) für hinterlegte Farbe

@@ -1,3 +1,18 @@
+void showConnectedToGps()
+{
+    showGreen();
+}
+
+void showConnectingToGps()
+{
+    showRed();
+}
+
+void showConnectedToWifi()
+{
+    showBlue();
+}
+
 void showYellow()
 {
     rgb_led_1.setPixelColor(0, rgb_led_1.Color(255, 255, 51));
